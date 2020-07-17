@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+namespace _01_Practice
+{
+    public partial class Form1 : Form
+    {
+        const int RAD = 100;
+        const int MOVE_VAL = 20;
+        int x = 0, y = 0;
+        Timer timer = new Timer();
+        public Form1()
+        {
+            InitializeComponent();
+            this.Paint += Form1_Paint;
+            timer.Interval = 100;
+            timer.Tick += Timer_Tick;
+        }
+
+   
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+
+            x += MOVE_VAL;
+            Invalidate();
+
+            if (x == 0 || x == 800)
+                x *= -1;
+            //      x += dirX;
+            //y += dirY;
+            //// x의 경계선에 닿으면 x의 변화
+            //if (x == WIDTH || x == 0)
+            //   dirX *= -1;
+            //// y의 경계선에 닿으면 y의 변화
+            //if (y == HEIGHT || y == 0)
+            //   dirY *= -1;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen myPen = new Pen(Brushes.DarkBlue, 5);
+
+            g.DrawEllipse(myPen, x, y, RAD, RAD);
+
+            
+           
+                timer.Start();
+            
+        }
+    }
+}
