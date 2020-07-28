@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace _01_drawLines
+{
+    public partial class Form1 : Form
+    {
+
+        class Pos
+        {
+            int startX, startY, endX, endY;
+            public Pos(int _startX, int _startY, int _endX, int _endY)
+            {
+                StartX = _startX;
+                StartY = _startY;
+                EndX = _endX;
+                EndY = _endY;
+            }
+
+            public int StartX { get => startX; set => startX = value; }
+            public int StartY { get => startY; set => startY = value; }
+            public int EndX { get => endX; set => endX = value; }
+            public int EndY { get => endY; set => endY = value; }
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+            this.Load += Form1_Load;
+            this.Paint += Form1_Paint;
+            this.MouseDown += Form1_MouseDown;
+            this.MouseMove += Form1_MouseMove;
+            this.MouseUp += Form1_MouseUp;
+        }
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            endX = e.X;
+            endY = e.Y;
+            Invalidate();
+        }
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.startX = e.X;
+                this.startY = e.Y;
+            }
+            Invalidate();
+        }
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.FillRectangle(Brushes.White, startX, startY, endX, endY);
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Blue;
+        }
+    }
+}
