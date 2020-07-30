@@ -1,0 +1,101 @@
+using System;
+
+namespace NumberBaseball
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("+====================================+");
+            Console.WriteLine("          NumberBaseball              ");
+            Console.WriteLine("+====================================+");
+            Console.WriteLine("컴퓨터는 수비수, 세 자릿수를 하나 골랐다.");
+            Console.WriteLine("각 숫자는 0~9 중에 하나며 중복되는 숫자는 없다.");
+            Console.WriteLine("모든 숫자와 위치를 맞으면 승리한다.");
+            Console.WriteLine("스트라이크 : 숫자와 위치 둘 다 맞다.");
+            Console.WriteLine("볼         : 숫자만 맞고 위치가 틀리다.");
+            Console.WriteLine("기회는 단 10회!                     ");
+            Console.WriteLine("+====================================+");
+
+
+
+            // 컴퓨터(수비수)가 랜덤숫자3개를 뽑는다 (화면에 출력되진않는다?)
+            Random random = new Random();
+            int[] comNum = new int[3];
+            int index = 0;
+            while(index<3)
+            {
+                comNum[index] = random.Next(0, 10);
+
+                bool hasDuplicate = false;
+                for(int j=0;j<index;j++)
+                {
+                    if(comNum[index]==comNum[j])
+                    {
+                        hasDuplicate = true;
+                        break;
+                    }
+                }
+
+                if(!hasDuplicate)
+                {
+                    index++;
+                }
+            }
+
+
+            // 나(공격수)의 숫자3개를 입력받는다
+            int[] myNum = new int[3];
+            string[] inputMessages = { "> 첫 번째 숫자를 입력하세요.", "> 두 번째 숫자를 입력하세요.", "> 세 번째 숫자를 입력하세요." };
+
+            while(true)
+            {
+                for(int i=0;i<3;i++)
+                {
+                    Console.WriteLine(inputMessages[i]);
+                    myNum[i] = int.Parse(Console.ReadLine());
+                }
+                Console.WriteLine("내(공격수)가 고른 숫자");
+
+                for(int i=0;i<3;i++)
+                {
+                    Console.WriteLine(myNum[i]);
+                }
+                if(myNum[0]==myNum[1]||)
+            }
+
+             // 0번째끼리 비교, 1번째끼리 비교, 2번째끼리 비교
+             // 비교값이 같은 수만큼 스트라이크 발생
+             // 그 외는 그 수만큼 볼 발생
+             // 3.에서 3개의 일치면 우승
+
+
+
+
+
+
+
+            // 컴퓨터(수비수)가 랜덤숫자3개를 뽑는다 (화면에 출력되진않는다?)
+            Random random = new Random();
+            int correctNum = random.Next(1, 9);
+
+            // 나(공격수)의 숫자3개를 입력받는다
+            int[] myNum = new int[3];
+            Console.ReadLine()
+
+             // 0번째끼리 비교, 1번째끼리 비교, 2번째끼리 비교
+             // 비교값이 같은 수만큼 스트라이크 발생
+             // 그 외는 그 수만큼 볼 발생
+             // 3.에서 3개의 일치면 우승
+
+
+
+
+
+
+
+
+
+        }
+    }
+}
