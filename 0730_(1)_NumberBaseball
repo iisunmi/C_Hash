@@ -44,7 +44,7 @@ namespace NumberBaseball
             }
 
 
-            // 나(공격수)의 숫자3개를 입력받는다
+            // 나(공격수)의 숫자3개를 입력받는다 => int형 배열 크기3 선언
             int[] myNum = new int[3];
             string[] inputMessages = { "> 첫 번째 숫자를 입력하세요.", "> 두 번째 숫자를 입력하세요.", "> 세 번째 숫자를 입력하세요." };
 
@@ -61,13 +61,54 @@ namespace NumberBaseball
                 {
                     Console.WriteLine(myNum[i]);
                 }
-                if(myNum[0]==myNum[1]||)
+                if(myNum[0]==myNum[1]||myNum[0]==myNum[2]||myNum[1]==myNum[2])
+                {
+                    Console.WriteLine("같은 숫자를 입력하면 안 됩니다.");
+                    continue;
+                }
+
+                // 0번째끼리 비교, 1번째끼리 비교, 2번째끼리 비교
+                // 비교값이 같은 수만큼 스트라이크 발생
+                // 그 외는 그 수만큼 볼 발생
+
+                int strikeCount = 0;
+                int ballCount = 0;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if(myNum[i]==comNum[j])
+                        {
+                            if(i==j){ strikeCount++; }
+                            else { ballCount++; }
+                        }
+                    }
+                }
+
+                Console.WriteLine("스트라이크 ");
+                Console.WriteLine(strikeCount);
+                Console.Write("볼 ");
+                Console.WriteLine(ballCount);
+                Console.Write("아웃 ");
+                Console.WriteLine(3 - strikeCount - ballCount);
+
+                // 3.에서 3개의 일치면 우승
+                if (strikeCount==3)
+                {
+                    Console.WriteLine("정답입니다!");
+                    break;
+                }
             }
 
-             // 0번째끼리 비교, 1번째끼리 비교, 2번째끼리 비교
-             // 비교값이 같은 수만큼 스트라이크 발생
-             // 그 외는 그 수만큼 볼 발생
-             // 3.에서 3개의 일치면 우승
+
+            m = 123
+            c= 321
+                m=1
+                c= 321
+
+
+
 
 
 
@@ -82,7 +123,9 @@ namespace NumberBaseball
             // 나(공격수)의 숫자3개를 입력받는다
             int[] myNum = new int[3];
             Console.ReadLine()
+            myNum = Int32.Parse(Console.ReadLine());
 
+            
              // 0번째끼리 비교, 1번째끼리 비교, 2번째끼리 비교
              // 비교값이 같은 수만큼 스트라이크 발생
              // 그 외는 그 수만큼 볼 발생
